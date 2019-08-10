@@ -1,0 +1,18 @@
+{
+  "name": "insubuy-code-challenge",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server/bin/www"
+  },
+  "dependencies": {
+    "body-parser": "latest",
+    "concurrently": "^4.1.1",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-es6-template-engine": "^2.1.8",
+    "morgan": "~1.9.0"
+  }
+}
