@@ -11,7 +11,8 @@ export class ResultsComponent implements OnInit {
   
   @Input() data: any;
   public mode:number = 1;
-  
+  public enableModal: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -20,6 +21,10 @@ export class ResultsComponent implements OnInit {
 
   displayMode(value: number){
     this.mode = value;
+  }
+
+  modalEmit(event: boolean){
+    this.enableModal = event;
   }
 
 }

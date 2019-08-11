@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CheckboxControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-list-view',
@@ -14,6 +15,17 @@ export class ListViewComponent implements OnInit {
   public typeValue: any;
   public sectionValue: any;
   public bestSellersValue: any;
+  public recordCheck: boolean;
+  public compareError: boolean = false;
+  public modalShow: boolean = false;
+  public modalArray = [];
+
+  @Output() modalValueEmit = new EventEmitter(); 
+
+  public modal = document.getElementById("myModal");
+  public btn = document.getElementById("myBtn");
+  public span = document.getElementsByClassName("close")[0];
+
   constructor() { }
 
   ngOnInit() {
@@ -62,4 +74,39 @@ export class ListViewComponent implements OnInit {
       } 
     }
   }
+
+  recordChecked(checkValue: any, record: any){
+    let removeIndex: number;
+    if(checkValue.target.checked){
+      this.modalArray.push(record);
+    } else {
+      this.modalArray = this.modalArray.map((value, index) => {
+          if(value.id !== record.id) {
+            return value;
+          } else {
+            removeIndex = index;
+          }
+      });
+
+      this.modalArray.splice(removeIndex, 1);
+    }
+  }
+
+  compareQuotes(){
+    if(this.modalArray.length < 2 || this.modalArray.length > 4){
+      this.compareError = true;
+      this.modalShow = false;
+
+    } else {
+      this.compareError = false;
+      this.modalShow = true;
+      this.modalValueEmit.emit(true);
+    }
+  }
+
+  closeModal(){
+    this.modalShow = false;
+    this.modalValueEmit.emit(false);
+  }
+
 }

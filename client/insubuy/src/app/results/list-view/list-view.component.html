@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row" *ngIf="!modalShow">
     <div class="column">
-            <table id="myTable">
+            <table id="myTable" class="myTab">
                 <tr style="background-color:#aaa;">
                     <th (click)="nameSort()">Name<span><i *ngIf="name" class="sort-by-desc"></i>
                         <i *ngIf="!name" class="sort-by-asc"></i></span></th>
@@ -23,6 +23,7 @@
                     <th><div>Bestsellers</div>
                         <input type="text" id="sectionId" (keyup)="sectionFilter(bestSellersValue, 5)" [(ngModel)]="bestSellersValue" placeholder="Best Sellers filter" />
                     </th>
+                    <th>Compare</th>
                 </tr>
                 <tr *ngFor="let list of listData" style="background-color:white;">
                     <td>{{list.name}}</td>
@@ -31,7 +32,17 @@
                     <td>{{list.type}}</td>
                     <td>{{list.section}}</td>
                     <td>{{list.bestSellers}}</td>
+                    <td><input type='checkbox' name="list.id" value="list.id" (change)="recordChecked($event, list)" 
+                        /></td>
                 </tr>
             </table>
     </div>
+    <button class="compareBtn" type="button" (click)="compareQuotes()">Compare Quotes</button>
+    <div class="errorMsg">
+        <label *ngIf="compareError" class="colorRed">Please select minimum 2 and maximum 4 quotes</label>
+    </div>
+  </div>
+  <div *ngIf="modalShow">
+    <button type="button" class="close" (click)="closeModal()">X</button>
+    <app-grid-view [gridData]="modalArray"></app-grid-view>
   </div>

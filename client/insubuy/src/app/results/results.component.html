@@ -1,18 +1,20 @@
-<div class="btns">
-    <button class="listBtn" [disabled]="mode === 1" type='button' (click)="displayMode(1)">
-        <strong>List</strong> 
-    </button>
-    <button class="gridBtn" [disabled]="mode === 2" type='button' (click)="displayMode(2)">
-        <strong>Grid</strong>
-    </button>
-</div>
-
-<div class="listGrid" *ngIf="mode === 1">
-    <h2 class="whiteClr">LIST VIEW</h2>
-    <app-list-view [listData]="data"></app-list-view>
-</div>
-
-<div class="listGrid" *ngIf="mode === 2">
-    <h2 class="whiteClr">GRID VIEW</h2>
-    <app-grid-view [gridData]="data"></app-grid-view>
+<div>
+    <div class="btns">
+        <button class="listBtn" [disabled]="mode === 1" type='button' (click)="displayMode(1)">
+            <strong>List</strong> 
+        </button>
+        <button class="gridBtn" [disabled]="mode === 2" type='button' (click)="displayMode(2)">
+            <strong>Grid</strong>
+        </button>
+    </div>
+    
+    <div class="listGrid" *ngIf="mode === 1">
+        <h2 class="whiteClr">LIST VIEW</h2>
+        <app-list-view (modalValueEmit)="modalEmit($event);" [listData]="data"></app-list-view>
+    </div>
+    
+    <div class="listGrid" *ngIf="mode === 2">
+        <h2 class="whiteClr">GRID VIEW</h2>
+        <app-grid-view [gridData]="data"></app-grid-view>
+    </div>
 </div>

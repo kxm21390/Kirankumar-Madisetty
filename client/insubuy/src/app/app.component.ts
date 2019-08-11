@@ -62,7 +62,7 @@ export class AppComponent implements OnInit{
   }
 
   startDateBlur(value: any){
-    if(!value || value <= this.newDate){
+    if(!value || value < this.newDate){
       this.startDateFlag = true;
     }
     else {
@@ -72,7 +72,7 @@ export class AppComponent implements OnInit{
   }
 
   endDateBlur(value: any){
-    if(!value || value < value){
+    if(!value || value <= this.startDateValue){
       this.endDateFlag = true;
     }
     else {

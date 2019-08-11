@@ -2,18 +2,21 @@
     margin: 0 auto;
     text-align: center;
     width: 100%;
+    background-color: white;
 }
 .listBtn {
     height: 50px;
     width: 50%;
     font-size: 25px;
     background-color: white;
+    color: black;
 }
 .gridBtn {
     height: 50px;
     width: 50%;
     font-size: 25px;
     background-color: white;
+    color: black;
 }
 .whiteClr {
     color: white;
