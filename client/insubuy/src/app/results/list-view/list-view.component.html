@@ -1,13 +1,28 @@
 <div class="row">
     <div class="column">
-            <table>
+            <table id="myTable">
                 <tr style="background-color:#aaa;">
-                    <th>Name</th>
-                    <th>Description</th> 
-                    <th>Price</th>
-                    <th>Type</th>
-                    <th>Section</th>
-                    <th>Bestsellers</th>
+                    <th (click)="nameSort()">Name<span><i *ngIf="name" class="sort-by-desc"></i>
+                        <i *ngIf="!name" class="sort-by-asc"></i></span></th>
+                    
+                    <th><div>Description</div>
+                        <input type="text" id="sectionId" (keyup)="sectionFilter(descriptionValue, 1)" [(ngModel)]="descriptionValue" placeholder="Description filter" />
+                    </th>
+                    
+                    <th (click)="priceSort()">Price<span><i *ngIf="price" class="sort-by-desc"></i>
+                        <i *ngIf="!price" class="sort-by-asc"></i></span></th>
+                    
+                    <th><div>Type</div>
+                        <input type="text" id="sectionId" (keyup)="sectionFilter(typeValue, 3)" [(ngModel)]="typeValue" placeholder="Type filter" />
+                    </th>
+                        
+                    <th><div>Section</div>
+                        <input type="text" id="sectionId" (keyup)="sectionFilter(sectionValue, 4)" [(ngModel)]="sectionValue" placeholder="section filter" />
+                    </th>
+                    
+                    <th><div>Bestsellers</div>
+                        <input type="text" id="sectionId" (keyup)="sectionFilter(bestSellersValue, 5)" [(ngModel)]="bestSellersValue" placeholder="Best Sellers filter" />
+                    </th>
                 </tr>
                 <tr *ngFor="let list of listData" style="background-color:white;">
                     <td>{{list.name}}</td>
