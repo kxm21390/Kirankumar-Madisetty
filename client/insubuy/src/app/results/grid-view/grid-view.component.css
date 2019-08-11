@@ -1,0 +1,18 @@
+.column {
+  float: left;
+  width: 22%;
+  padding: 10px;
+  margin: 6px;
+  font-size: 12px;
+  border: 0.5px solid blue;
+  }
+  @media only screen and (max-width: 730px) {
+    .column {
+      width: 100%;
+    }
+  }
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }

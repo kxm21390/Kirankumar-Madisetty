@@ -13,6 +13,9 @@
     .inner-container {
         width: 100%;
     }
+    .container {
+        width: 100%;
+    }
     .image {
         width: 130px;
     }
@@ -46,7 +49,108 @@ div.image {
     vertical-align: top;
     display: inline;
 }
-@media only screen and (max-width: 730px) {
+
+.width100 {
+    width: 100%;
+}
+
+.colorRed {
+    color: red;
+}
+
+
+.QuoteButton {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    margin-left: 66px;
+    background-color: orange;
+    font-size: 15px;
+}
+
+.resetLink {
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 134px;
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+    width: 95px;
+}
+
+.resetLink:hover{
+    text-decoration: underline;
+    color: blue;
+}
+
+.start {
+    width: 350px;
+    float: left;
+    margin: 10px;
+}
+.end {
+    width: 350px;
+    float: left;
+    margin: 10px;
+}
+.start-in {
+    width: 300px;
+    height: 35px;
+}
+.end-in {
+    width: 300px;
+    height: 35px;
+}
+.policy {
+    width: 350px;
+    float: left;
+    margin: 10px;
+}
+.policy-in {
+    height: 35px;
+    width: 300px;
+}
+.citizen {
+    width: 350px;
+    float: left;
+    margin: 10px;
+}
+.citizen-in {
+    width: 300px;
+    height: 35px;
+}
+.age {
+    width: 350px;
+    float: left;
+    margin: 10px;
+}
+.state {
+    width: 350px;
+    float: left;
+    margin: 10px;
+}
+.age-in {
+    width: 300px;
+    height: 35px;
+}
+.state-in {
+    width: 300px;
+    height: 35px;
+}
+.invalid {
+    width: 300px;
+    height: 0;
+}
+.error-txt {
+    width: 300px;
+}
+.marginbtm {
+    margin-bottom: 30px;
+}
+@media only screen and (max-width: 600px) {
     .titleText {
         vertical-align: baseline;
         height: 55px;
@@ -54,9 +158,6 @@ div.image {
     .formDiv {
         margin-left: 0;
         padding: 0;
-    }
-    .start {
-        margin: 0;
     }
     .start-in {
         width: 250px;
@@ -93,77 +194,10 @@ div.image {
         padding: 0;
         width: 70%;
     }
+    .QuoteButton {
+        margin-left: 33px !important;
+    }
+    .resetLink {
+        margin-left: 65px !important
+    }
   }
-.width100 {
-    width: 100%;
-}
-
-.QuoteButton {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: white;
-    margin-left: 65px;
-    background-color: orange;
-    font-size: 15px;
-}
-
-.resetLink {
-   margin-left: 134px;
-    
-}
-.start {
-    width: 350px;
-    float: left;
-    margin: 10px;
-}
-.end {
-    width: 350px;
-    float: left;
-    margin: 10px;
-}
-.start-in {
-    width: 300px;
-    height: 30px;
-}
-.end-in {
-    width: 300px;
-    height: 30px;
-}
-.policy {
-    width: 350px;
-    float: left;
-    margin: 10px;
-}
-.policy-in {
-    height: 30px;
-    width: 300px;
-}
-.citizen {
-    width: 350px;
-    float: left;
-    margin: 10px;
-}
-.citizen-in {
-    width: 300px;
-    height: 30px;
-}
-.age {
-    width: 350px;
-    float: left;
-    margin: 10px;
-}
-.state {
-    width: 350px;
-    float: left;
-    margin: 10px;
-}
-.age-in {
-    width: 300px;
-    height: 30px;
-}
-.state-in {
-    width: 300px;
-    height: 30px;
-}

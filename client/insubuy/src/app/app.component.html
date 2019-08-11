@@ -1,48 +1,106 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="container">
-  <div class="inner-container">
-      <div class="imageDiv">
-          <div class="image"></div>
-          <div class="titleText">Travel Insurance</div>
-        </div>
-      
-        <div class="formDiv">
-          <div class="start"> 
-              <div><strong>Start Date</strong></div>
-              <input type="date" name="start date" class="start-in"/>
+<app-results *ngIf="tableData; else formData" [data]="totalData"></app-results>
+<ng-template #formData>
+  <div class="container">
+    <div class="inner-container">
+        <div class="imageDiv">
+            <div class="image"></div>
+            <div class="titleText">Travel Insurance</div>
           </div>
-      
-          <div class="end">
-              <div><strong>End Date</strong> </div>
-              <input type="date" name="end date" class="end-in"/>
+        
+          <div class="formDiv">
+          <form name="form" [formGroup]="form">
+              <div class="start form-group marginbtm"> 
+                  <div><strong>Start Date</strong></div>
+                  <input type="date" [(ngModel)]="startDateValue" (focus)="startDateFlag = false" (blur)= 'startDateBlur(startDateValue)' name="start date" class="start-in form-control" formControlName = "startDate" 
+                  [ngClass]="{'colorRed' : startDateFlag}" />
+                  
+                  <div *ngIf="startDateFlag" 
+                  class="invalid" [ngClass]="{'colorRed' : startDateFlag}">
+                    <span class="error-txt">Assign Date greater than today</span>
+                  </div>
+              </div>
+          
+              <div class="end form-group marginbtm">
+                  <div><strong>End Date</strong></div>
+                  <input type="date" [(ngModel)]="endDateValue" (focus)="endDateFlag = false" (blur)= 'endDateBlur(endDateValue)' name="end date" class="end-in form-control" formControlName = "endDate" 
+                  [ngClass]="{'colorRed' : endDateFlag}" />
+  
+                  <div *ngIf="endDateFlag" 
+                  class="invalid" [ngClass]="{'colorRed' : endDateFlag}">
+                    <span>End date should be greater than start date</span>
+                  </div>
+              </div>
+          
+              <div class="policy form-group marginbtm" >
+                  <div><strong>Policy max</strong></div>
+                  <!-- <input class="policy-in" placeholder="Choose Your Policy Maximum"/> -->
+                  <select class="policy-in" id='policy' (change)="policyChange($event)" 
+                  (focus)="policyChange($event)" [ngClass]="{'colorRed' : policyFlag}">
+                      <option *ngFor="let order of policy; let i = index" [value]="policy[i].id">
+                        <span>{{order.range}}</span> <span *ngIf="policy[i].value">( value {{order.value}})</span>
+                      </option>
+                  </select>
+  
+                  <div *ngIf="policyFlag" 
+                  class="invalid" [ngClass]="{'colorRed' : policyFlag}">
+                    <span>Please select a policy</span>
+                  </div>
+  
+              </div>
+          
+              <div class="citizen form-group marginbtm">
+                  <div><strong>Citizenship</strong></div>
+                  <input class="citizen-in" [(ngModel)]="citizenValue" (focus)="citizenFlag = false" (blur)="citizenBlur(citizenValue)" 
+                  name="citizen" placeholder="Choose Your Country Of Citizenship" formControlName = "citizen"
+                  [ngClass]="{'colorRed' : citizenFlag}"/>
+                  
+                  <div *ngIf="citizenFlag" 
+                  class="invalid" [ngClass]="{'colorRed' : citizenFlag}">
+                    <span>Enter citizenship and no numbers or special characters</span>
+                  </div>
+              </div>
+          
+              <div class="age form-group marginbtm">
+                  <div><strong>Age/year</strong></div>
+                  <input class="age-in" [(ngModel)]="ageValue" (focus)="ageFlag = false" (blur)="ageBlur(ageValue)" formControlName="age"
+                  placeholder="Choose Your Age" [ngClass]="{'colorRed' : ageFlag}" />
+  
+                  <div *ngIf="ageFlag" 
+                  class="invalid" [ngClass]="{'colorRed' : ageFlag}">
+                    <span>Enter only numbers and should not be more than 100 years</span>
+                  </div>
+  
+              </div>
+          
+              <div class="state form-group marginbtm">
+                  <div><strong>Mailing State</strong></div>
+                  <input class="state-in" [(ngModel)]="stateValue" (focus)="stateFlag = false" (blur)="stateBlur(stateValue)" formControlName="state"
+                   placeholder="Choose Your State" [ngClass]="{'colorRed' : stateFlag}" />
+  
+                   <div *ngIf="stateFlag" 
+                        class="invalid" [ngClass]="{'colorRed' : stateFlag}">
+                          <span>Enter State with no special characters and numbers</span>
+                    </div>
+              </div>
+  
+          </form>
           </div>
-      
-          <div class="policy">
-              <div><strong>Policy max</strong></div>
-              <input class="policy-in" placeholder="Choose Your Policy Maximum"/>
+        
+          <div class="tailDiv">
+            <button class="width100 QuoteButton" 
+            [disabled]="!startDateValue || startDateValue.length === 0 || startDateFlag || 
+            !endDateValue || endDateValue.length === 0 || endDateFlag ||
+            policyFlag ||
+            !citizenValue || citizenValue.length === 0 || citizenFlag ||
+            !ageValue || ageValue.length === 0 || ageFlag ||
+            !stateValue || stateValue.length === 0 || stateFlag"
+            (click)="getQuote()">GET QUOTES</button>
+            <button class="width100 resetLink" (click)="resetLink()"><i>Reset Form</i></button>
           </div>
-      
-          <div class="citizen">
-              <div><strong>Citizenship</strong></div>
-              <input class="citizen-in" placeholder="Choose Your Country Of Citizenship"/>
-          </div>
-      
-          <div class="age">
-              <div><strong>Age/year</strong></div>
-              <input class="age-in" placeholder="Choose Your Age"/>
-          </div>
-      
-          <div class="state">
-              <div><strong>Mailing State</strong></div>
-              <input class="state-in" placeholder="Choose Your State"/>
-          </div>
-        </div>
-      
-        <div class="tailDiv">
-          <button class="width100 QuoteButton">GET QUOTES</button>
-          <a class="width100 resetLink" href="google.com"><i>Reset Form</i></a>
-        </div>
+    </div>
   </div>
-</div>
+  
+</ng-template>
 
 <router-outlet></router-outlet>

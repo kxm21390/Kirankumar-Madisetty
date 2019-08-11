@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="column">
+            <table>
+                <tr style="background-color:#aaa;">
+                    <th>Name</th>
+                    <th>Description</th> 
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Section</th>
+                    <th>Bestsellers</th>
+                </tr>
+                <tr *ngFor="let list of listData" style="background-color:white;">
+                    <td>{{list.name}}</td>
+                    <td>{{list.description}}</td>
+                    <td>{{list.price}}</td>
+                    <td>{{list.type}}</td>
+                    <td>{{list.section}}</td>
+                    <td>{{list.bestSellers}}</td>
+                </tr>
+            </table>
+    </div>
+  </div>

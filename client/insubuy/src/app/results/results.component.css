@@ -1,0 +1,24 @@
+.btns {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+.listBtn {
+    height: 50px;
+    width: 50%;
+    font-size: 25px;
+    background-color: white;
+}
+.gridBtn {
+    height: 50px;
+    width: 50%;
+    font-size: 25px;
+    background-color: white;
+}
+.whiteClr {
+    color: white;
+}
+.listGrid {
+    width: 100%;
+    text-align: center;
+}
